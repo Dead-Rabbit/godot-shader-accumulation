@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtfurbk42nuhh"]
+
+[sub_resource type="Environment" id="Environment_bjhf6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_bjhf6"]
+
+[node name="World" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(1152, 648)
+
+[node name="Environment" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Environment"]
+transform = Transform3D(0.65463525, 0.2976771, 0.6948677, -0.47342086, -0.5551817, 0.6838465, 0.58934313, -0.77663493, -0.22251494, 0, 1.4807398, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Environment"]
+environment = SubResource("Environment_bjhf6")
+
+[node name="Meshes" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Sphere" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Meshes"]
+mesh = SubResource("SphereMesh_bjhf6")
+skeleton = NodePath("../../../..")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.8812787, 0.4725969, 0, -0.4725969, 0.8812787, 0, 1.7245343, 2.466819)
