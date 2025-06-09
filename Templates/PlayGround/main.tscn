@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds1uv0vgr6mpr"]
+
+[ext_resource type="Material" uid="uid://yo0ca3j6hft8" path="res://Templates/0_Base/Materials/m_ground.tres" id="1_g1clb"]
+[ext_resource type="Material" uid="uid://blgja3n8t5f4v" path="res://Templates/PlayGround/Materials/m_playground.tres" id="1_kgg5l"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_g1clb"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ydfnh"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71949, 0)
+mesh = SubResource("SphereMesh_g1clb")
+surface_material_override/0 = ExtResource("1_kgg5l")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0, 0, 0)
+mesh = SubResource("QuadMesh_ydfnh")
+surface_material_override/0 = ExtResource("1_g1clb")
+metadata/_edit_lock_ = true

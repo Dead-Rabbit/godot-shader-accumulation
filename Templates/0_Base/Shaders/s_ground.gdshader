@@ -64,4 +64,5 @@ void fragment() {
 
 	// final color (premultiplied alpha blend)
 	ALBEDO = (checkerColor.rgb * alphaChec) * (1.0 - alphaGrid) + (gridColor.rgb * alphaGrid);
+
 }

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://blgja3n8t5f4v"]
+
+[ext_resource type="Shader" uid="uid://cew62ocrdd3x6" path="res://Templates/PlayGround/Shaders/s_playground.gdshader" id="1_aujv7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_aujv7")
+shader_parameter/w = PackedVector3Array(1, 0.5, 0)
