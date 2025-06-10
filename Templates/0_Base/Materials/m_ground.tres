@@ -7,6 +7,7 @@ render_priority = 0
 shader = ExtResource("1_g784u")
 shader_parameter/gridColor = Color(0.6313726, 0.6313726, 0.6313726, 1)
 shader_parameter/checkerColor = Color(0.6313726, 0.6313726, 0.6313726, 1)
+shader_parameter/transparentCheckerColor = Color(0.35656494, 0.3565649, 0.3565649, 1)
 shader_parameter/fadeStart = 0.0
 shader_parameter/fadeEnd = 20.0
 shader_parameter/unitSize = 1.0

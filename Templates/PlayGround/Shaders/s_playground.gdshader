@@ -1,19 +1,18 @@
 shader_type spatial;
 
-const lowp vec3 v[1] = lowp vec3[1] ( vec3(0, 0, 1) );
-uniform lowp vec3 w[1];
+uniform vec4 albedo_color: source_color;
+uniform float height_scale = 0.2;
+uniform sampler2D noise;
+uniform sampler2D normalmap;
+
+varying vec2 tex_position;
 
 void vertex() {
-	// Called for every vertex the material is visible on.
+	tex_position = VERTEX.xz / 2.0 + 0.5;
+	float height = texture(noise, tex_position).x;
+	VERTEX.y += height * height_scale;
 }
 
 void fragment() {
-	// Called for every pixel the material is visible on.
-	
-	ALBEDO = v[0] + w[0];
+	NORMAL_MAP = texture(normalmap, tex_position).xyz;
 }
-
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}

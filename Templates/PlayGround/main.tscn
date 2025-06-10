@@ -1,21 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds1uv0vgr6mpr"]
+[gd_scene load_steps=8 format=3 uid="uid://ds1uv0vgr6mpr"]
 
 [ext_resource type="Material" uid="uid://yo0ca3j6hft8" path="res://Templates/0_Base/Materials/m_ground.tres" id="1_g1clb"]
-[ext_resource type="Material" uid="uid://blgja3n8t5f4v" path="res://Templates/PlayGround/Materials/m_playground.tres" id="1_kgg5l"]
+[ext_resource type="Material" uid="uid://8xtqxihlfdmb" path="res://Templates/PlayGround/Materials/m_water_color.tres" id="1_kgg5l"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_g1clb"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kgg5l"]
+sky_top_color = Color(0.31909627, 0.54679996, 0.85352296, 1)
+sky_horizon_color = Color(0.70765543, 0.7568313, 0.8245121, 1)
+ground_horizon_color = Color(0.70765543, 0.7568313, 0.8245121, 1)
+
+[sub_resource type="Sky" id="Sky_7o0dh"]
+sky_material = SubResource("ProceduralSkyMaterial_kgg5l")
+
+[sub_resource type="Environment" id="Environment_du434"]
+background_mode = 2
+sky = SubResource("Sky_7o0dh")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kgg5l"]
+subdivide_width = 32
+subdivide_depth = 32
 
 [sub_resource type="QuadMesh" id="QuadMesh_ydfnh"]
 
 [node name="Main" type="Node3D"]
 
-[node name="Sphere" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71949, 0)
-mesh = SubResource("SphereMesh_g1clb")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_du434")
+
+[node name="Toy" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.33055282, 0.0019490421, -0.94032747)
+mesh = SubResource("PlaneMesh_kgg5l")
 surface_material_override/0 = ExtResource("1_kgg5l")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0, 0, 0)
+visible = false
 mesh = SubResource("QuadMesh_ydfnh")
 surface_material_override/0 = ExtResource("1_g1clb")
-metadata/_edit_lock_ = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.58313006, -0.8123788, 1.3637555e-08, 0.65829337, 0.47252673, 0.58597636, -0.4760348, -0.34170043, 0.8103281, 0, 2.5913048, 0)

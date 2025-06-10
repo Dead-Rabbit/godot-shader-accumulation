@@ -3,6 +3,7 @@ render_mode blend_mix,depth_draw_opaque, unshaded;
 
 uniform vec4 gridColor: source_color;
 uniform vec4 checkerColor: source_color;
+uniform vec4 transparentCheckerColor: source_color;
 uniform float fadeStart = 0.0;
 uniform float fadeEnd = 10.0;
 uniform float unitSize = 1.0;
@@ -58,11 +59,16 @@ void fragment() {
 	// final alpha
 	float alphaGrid = line * gridColor.a;
 	float alphaChec = chec * checkerColor.a;
-	ALPHA = clamp(alphaGrid + alphaChec, 0.0, 1.0) * fadeFactor;
+    float alphaTransparentChec = (1.0 - chec) * transparentCheckerColor.a;
+
+    ALPHA = clamp(alphaGrid + alphaChec + alphaTransparentChec, 0.0, 1.0) * fadeFactor;
 	// eliminate grid above the horizon
 	ALPHA *= step(t, 0.0);
 
 	// final color (premultiplied alpha blend)
-	ALBEDO = (checkerColor.rgb * alphaChec) * (1.0 - alphaGrid) + (gridColor.rgb * alphaGrid);
+	//ALBEDO = (checkerColor.rgb * alphaChec) * (1.0 - alphaGrid) + (gridColor.rgb * alphaGrid);
 
+    ALBEDO = (checkerColor.rgb * alphaChec) * (1.0 - alphaGrid)
+           + (transparentCheckerColor.rgb * alphaTransparentChec) * (1.0 - alphaGrid - alphaChec)
+           + (gridColor.rgb * alphaGrid);
 }

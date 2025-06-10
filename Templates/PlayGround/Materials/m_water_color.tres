@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://8xtqxihlfdmb"]
+
+[ext_resource type="Shader" uid="uid://cwwr7l3i8t7b" path="res://Templates/PlayGround/Shaders/s_water_color.gdshader" id="1_156uy"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8c7uh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_156uy"]
+noise = SubResource("FastNoiseLite_8c7uh")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_156uy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8c7uh"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_156uy")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_156uy")
+shader_parameter/height_scale = 0.2
+shader_parameter/noise = SubResource("NoiseTexture2D_156uy")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_8c7uh")
