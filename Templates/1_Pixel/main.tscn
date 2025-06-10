@@ -1,26 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtfurbk42nuhh"]
+[gd_scene load_steps=11 format=3 uid="uid://dtfurbk42nuhh"]
 
 [ext_resource type="Material" uid="uid://yo0ca3j6hft8" path="res://Templates/0_Base/Materials/m_ground.tres" id="1_jfvno"]
+[ext_resource type="Shader" uid="uid://c4l1bccyxurdi" path="res://Templates/1_Pixel/Shaders/s_edge_detection.gdshader" id="1_jqvgb"]
 
 [sub_resource type="Environment" id="Environment_bjhf6"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_q27gb"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q27gb"]
+render_priority = 0
+shader = ExtResource("1_jqvgb")
+shader_parameter/lineHeighlight = 0.2
+shader_parameter/lineShadow = 0.55
 
 [sub_resource type="SphereMesh" id="SphereMesh_bjhf6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_q27gb"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_jqvgb"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jqvgb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q27gb"]
+albedo_color = Color(0.31764707, 1, 1, 1)
+
 [node name="World" type="Node3D"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
+stretch_shrink = 8
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(144, 81)
 render_target_update_mode = 4
 
 [node name="Environment" type="Node3D" parent="SubViewportContainer/SubViewport"]
@@ -30,6 +50,16 @@ transform = Transform3D(0.65463525, 0.2976771, 0.6948677, -0.47342086, -0.555181
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Environment"]
 environment = SubResource("Environment_bjhf6")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.9307115, -0.18287706, 0.31675237, 0, 0.8660254, 0.50000006, -0.36575413, -0.46535575, 0.80601984, 3.169119, 7.2373357, 10.931825)
+projection = 1
+size = 3.74
+
+[node name="EdgeDetection" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Camera3D"]
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_q27gb")
+surface_material_override/0 = SubResource("ShaderMaterial_q27gb")
 
 [node name="Meshes" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
@@ -43,5 +73,11 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("PlaneMesh_q27gb")
 surface_material_override/0 = ExtResource("1_jfvno")
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.8812787, 0.4725969, 0, -0.4725969, 0.8812787, 0, 1.7245343, 2.466819)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Meshes"]
+transform = Transform3D(1.5376717, 0, 0, 0, 1, 0, 0, 0, 1.5376717, -1.7645969, 0, 0.034228325)
+mesh = SubResource("BoxMesh_jqvgb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Meshes/MeshInstance3D"]
+transform = Transform3D(0.6413126, 0, 0, 0, 0.5673796, 0, 0, 0, 0.6413126, 0, 0.68338835, 0)
+mesh = SubResource("CylinderMesh_jqvgb")
+surface_material_override/0 = SubResource("StandardMaterial3D_q27gb")

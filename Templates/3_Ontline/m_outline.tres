@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ihkspxn4yhvo"]
+
+[ext_resource type="Shader" uid="uid://w07lp15p2tvp" path="res://Templates/3_Ontline/s_outline.gdshader" id="1_qeiun"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qeiun")
+shader_parameter/outline_color = Color(0.18120003, 0.18120006, 0.18119991, 1)
+shader_parameter/outline_width = 1.0
+shader_parameter/fade_start = 10.0
+shader_parameter/fade_end = 30.0

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpgur2cerxt2a"]
+
+[ext_resource type="Material" uid="uid://yo0ca3j6hft8" path="res://Templates/0_Base/Materials/m_ground.tres" id="1_ni48p"]
+[ext_resource type="Material" uid="uid://ck7ye16k1nuce" path="res://Templates/2_Toons/m_toon_01.tres" id="2_x21ur"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lgddt"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ni48p"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x21ur"]
+
+[node name="Main" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_lgddt")
+surface_material_override/0 = ExtResource("1_ni48p")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4992807, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7653013, 0)
+material_override = ExtResource("2_x21ur")
+mesh = SubResource("SphereMesh_ni48p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.46934777, 0, 0, 0, 0.4494294, 0, 0, 0, 0.46934777, 0, 0.12924445, 0)
+material_override = ExtResource("2_x21ur")
+mesh = SubResource("CapsuleMesh_x21ur")

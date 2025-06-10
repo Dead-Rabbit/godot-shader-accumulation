@@ -11,6 +11,6 @@ config_version=5
 [application]
 
 config/name="shader-accumulation"
-run/main_scene="uid://dtfurbk42nuhh"
+run/main_scene="uid://cag4y2a4opjyf"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"

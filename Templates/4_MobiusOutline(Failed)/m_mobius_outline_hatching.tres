@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://buq6qyt5h3jle"]
+
+[ext_resource type="Shader" uid="uid://tvd4d6i3lt06" path="res://Templates/4_MobiusOutline(Failed)/s_mobius_outline_hatching.gdshader" id="1_s6tpu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_s6tpu")
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/edge_threshold = 0.010000000475
+shader_parameter/noise_frequency = 10.0
+shader_parameter/noise_offset_intensity = 0.002

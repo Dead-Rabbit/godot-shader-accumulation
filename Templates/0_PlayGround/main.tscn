@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ds1uv0vgr6mpr"]
 
 [ext_resource type="Material" uid="uid://yo0ca3j6hft8" path="res://Templates/0_Base/Materials/m_ground.tres" id="1_g1clb"]
-[ext_resource type="Material" uid="uid://8xtqxihlfdmb" path="res://Templates/PlayGround/Materials/m_water_color.tres" id="1_kgg5l"]
+[ext_resource type="Material" uid="uid://8xtqxihlfdmb" path="res://Templates/0_PlayGround/Materials/m_water_color.tres" id="1_kgg5l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kgg5l"]
 sky_top_color = Color(0.31909627, 0.54679996, 0.85352296, 1)

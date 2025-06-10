@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://8xtqxihlfdmb"]
 
-[ext_resource type="Shader" uid="uid://cwwr7l3i8t7b" path="res://Templates/PlayGround/Shaders/s_water_color.gdshader" id="1_156uy"]
+[ext_resource type="Shader" uid="uid://cwwr7l3i8t7b" path="res://Templates/0_PlayGround/Shaders/s_water_color.gdshader" id="1_156uy"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8c7uh"]
 

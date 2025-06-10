@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://4rnj6vwnwhb2"]
+
+[ext_resource type="Material" uid="uid://dwlqsmuol6pxs" path="res://Templates/5_Toons_Outline/m_toons_outline.tres" id="1_pdvdg"]
+[ext_resource type="Material" uid="uid://yo0ca3j6hft8" path="res://Templates/0_Base/Materials/m_ground.tres" id="2_qfs1m"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_au4ne"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pdvdg"]
+size = Vector2(10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cn5i6"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Item1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1566063, 0)
+mesh = SubResource("CapsuleMesh_au4ne")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.234058e-08, -0.24847011, 0.96863955, -1.08609735e-08, 0.96863955, 0.24847011, -1, 0, -4.371139e-08, 2.7271156, 1.9313527, 0)
+fov = 42.6
+
+[node name="Postprocess" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.873)
+extra_cull_margin = 16384.0
+mesh = SubResource("PlaneMesh_pdvdg")
+surface_material_override/0 = ExtResource("1_pdvdg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_cn5i6")
+surface_material_override/0 = ExtResource("2_qfs1m")
